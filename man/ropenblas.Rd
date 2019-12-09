@@ -4,10 +4,16 @@
 \alias{ropenblas}
 \title{Download, Compile and Link OpenBLAS Library with \R}
 \usage{
-ropenblas(x = NULL)
+ropenblas(x = NULL, restart_r = TRUE)
 }
 \arguments{
 \item{x}{\href{https://www.openblas.net/}{\strong{OpenBLAS}} library version to be considered. By default, \code{x = NULL}.}
+
+\item{restart_r}{If \code{TRUE}, a new section of \R is started after compiling and linking the \href{https://www.openblas.net/}{\strong{OpenBLAS}} library.}
+}
+\value{
+Returns a warning message informing you if the procedure occurred correctly. You will also be able to receive information about
+missing dependencies.
 }
 \description{
 Link \R with an optimized version of the \href{http://www.netlib.org/blas/}{\strong{BLAS}} library (\href{https://www.openblas.net/}{\strong{OpenBLAS}}).
@@ -27,9 +33,8 @@ computational performance for your simulations, since \href{https://www.openblas
 
 You must install the following dependencies on your operating system (Linux):
 \enumerate{
-   \item \strong{make};
-   \item \strong{gcc};
-   \item \strong{gcc-fortran}.
+   \item \strong{GNU Make};
+   \item \strong{GNU GCC Compiler (C and Fortran)}.
 }
 Your linux operating system may already be configured to use the \href{https://www.openblas.net/}{\strong{OpenBLAS}} library. Therefore, most likely \R will already be linked to this library. To find out if the \R language is using the \href{https://www.openblas.net/}{\strong{OpenBLAS}} library,
  at \R, do:
@@ -52,6 +57,9 @@ will always consider using the \href{https://www.openblas.net/}{\strong{OpenBLAS
 }
 \examples{
 \donttest{ropenblas()}
+}
+\seealso{
+\code{\link{rcompiler}}, \code{\link{last_version_r}}
 }
 \author{
 Pedro Rafael D. Marinho (e-mail: \email{pedro.rafael.marinho@gmail.com})
