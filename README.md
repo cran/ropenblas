@@ -1,5 +1,10 @@
 # ropenblas: Download, Compile and Link OpenBLAS Library with R
 
+[![last](https://www.r-pkg.org/badges/last-release/ropenblas)](https://CRAN.R-project.org/package=ropenblas)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ropenblas)](https://CRAN.R-project.org/package=ropenblas)
+[![total](http://cranlogs.r-pkg.org/badges/grand-total/ropenblas)](https://CRAN.R-project.org/package=ropenblas)
+[![month](https://cranlogs.r-pkg.org/badges/ropenblas)](https://CRAN.R-project.org/package=ropenblas)
+
 <img src="https://raw.githubusercontent.com/prdm0/ropenblas/master/logo.png" height="270" width="250" align="right" />
 
 The [**ropenblas**](https://prdm0.github.io/ropenblas/) is a package designed to facilitate the linking of the library [**OpenBLAS**](https://www.openblas.net/) with the language [**R**](https://www.r-project.org/). The package, which works only for Linux systems, will automatically download the latest source code from the [**OpenBLAS**](https://www.openblas.net/) library and compile the code. The package will automatically bind the language [**R**](https://www.r-project.org/) to use the [**OpenBLAS**](https://www.openblas.net/) library. Everything will be done automatically regardless of the Linux distribution you are using.
@@ -82,17 +87,17 @@ Given the higher version, the function will return the latest stable version of 
 ```
 > last_version_r(major = 3L)
 $last_version
-[1] "3.6.1"
+[1] "3.6.2"
 
 $versions
  [1] "3.0.0"         "3.0.1"         "3.0.2"         "3.0.3"         "3.1.0"         "3.1.1"         "3.1.2"        
  [8] "3.1.3"         "3.2.0"         "3.2.1"         "3.2.2"         "3.2.3"         "3.2.4-revised" "3.2.4"        
 [15] "3.2.5"         "3.3.0"         "3.3.1"         "3.3.2"         "3.3.3"         "3.4.0"         "3.4.1"        
 [22] "3.4.2"         "3.4.3"         "3.4.4"         "3.5.0"         "3.5.1"         "3.5.2"         "3.5.3"        
-[29] "3.6.0"         "3.6.1"        
+[29] "3.6.0"         "3.6.1"         "3.6.2"        
 
 $n
-[1] 30
+[1] 31
 ```
 
 or
@@ -116,7 +121,7 @@ $n
 
 ### 'rcompiler' function:
 
-This function is responsible for compiling a version of the [**R**](https://www.r-project.org/) language. The `x` argument is the version of [**R**](https://www.r-project.org/) that you want to compile. For example, `x = "3.6.1"` will compile and link **R-3.6.1** version  as the major version on your system. By default (`x = NULL`) will be compiled the latest stable version of the [**R**](https://www.r-project.org/)
+This function is responsible for compiling a version of the [**R**](https://www.r-project.org/) language. The `x` argument is the version of [**R**](https://www.r-project.org/) that you want to compile. For example, `x = "3.6.2"` will compile and link **R-3.6.2** version  as the major version on your system. By default (`x = NULL`) will be compiled the latest stable version of the [**R**](https://www.r-project.org/)
 
 The `version_openblas` [**OpenBLAS**](https://www.openblas.net/) argument is a version of the library that will be linked to the [**R**](https://www.r-project.org/) code that will be compiled. By default if `version_openblas = NULL`, the latest stable version of the library [**OpenBLAS**](https://www.openblas.net/) will be linked.
 
