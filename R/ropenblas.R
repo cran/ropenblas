@@ -118,7 +118,7 @@ connection <- function() {
         warning = function(w)
           cat("You apparently have no internet connection.\n")
       )
-  check <- "ping -c3 google.com" %>%
+  check <- "ping -c2 google.com" %>%
     nsystem(ignore.stderr = F, intern = TRUE)
   
   ifelse (!is.numeric(check) && !is.null(check), TRUE, FALSE)
@@ -216,7 +216,7 @@ error_r <- function(){
 #' @importFrom cli rule col_green symbol style_bold
 #' @seealso \code{\link{rcompiler}}, \code{\link{last_version_r}}
 #' @examples
-#' \donttest{ropenblas()}
+#' # ropenblas()
 #' @export
 ropenblas <- function(x = NULL, restart_r = TRUE) {
   if (Sys.info()[[1L]] != "Linux")
@@ -433,7 +433,7 @@ ropenblas <- function(x = NULL, restart_r = TRUE) {
 #' @importFrom magrittr "%>%"
 #' @importFrom RCurl getURL
 #' @importFrom XML getHTMLLinks
-#' @title Given the higher version, the function will return the latest stable version of the \R language.
+#' @title \R language versions
 #' @param major Major release number of \R language (e.g. \code{1L}, \code{2L}, \code{3L}, ...). If \code{major = NULL}, the function
 #' will consider the major release number.
 #' @details This function automatically searches \R language versions in the official language repositories. That way,
@@ -451,7 +451,7 @@ ropenblas <- function(x = NULL, restart_r = TRUE) {
 #' }
 #' @seealso \code{\link{ropenblas}}, \code{\link{rcompiler}}
 #' @examples
-#' \donttest{last_version_r(major = NULL)}
+#' \dontrun{last_version_r(major = NULL)}
 #' @export
 last_version_r <- function(major = NULL) {
   if (!connection())
@@ -665,7 +665,7 @@ change_r <- function (x, change = TRUE) {
 #' @return Returns a warning message informing you if the procedure occurred correctly. You will also be able to receive information about
 #' missing dependencies.
 #' @examples
-#' \donttest{rcompiler()}
+#' \dontrun{rcompiler()}
 #' @export
 rcompiler <- function(x = NULL,
                       version_openblas = NULL) {
@@ -782,4 +782,44 @@ rcompiler <- function(x = NULL,
     col_blue %>%
     style_bold %>%
     cat
+}
+
+#' @importFrom magrittr "%>%"
+#' @importFrom fs file_exists dir_create 
+#' @importFrom git2r clone tags remote_ls
+#' @importFrom glue glue
+#' @importFrom stringr str_extract
+#' @importFrom stats na.omit
+#' @title OpenBLAS library versions
+#' @details This function automatically searches \href{https://www.openblas.net/}{\strong{OpenBLAS}} library versions in the official \href{https://github.com/xianyi/OpenBLAS}{\strong{GitHub}} project.
+#' \enumerate{
+#'    \item \code{last_version}: Returns the latest stable version of the \href{https://www.openblas.net/}{\strong{OpenBLAS}} library.
+#'    \item \code{versions}: All stable versions of the \href{https://www.openblas.net/}{\strong{OpenBLAS}} library.
+#'    \item \code{n}: Total number of versions.
+#' }
+#' @seealso \code{\link{last_version_r}}, \code{\link{ropenblas}}, \code{\link{rcompiler}}
+#' @examples
+#' \dontrun{last_version_openblas()}
+#' @export
+last_version_openblas <- function() {
+  if (!connection())
+    stop("You apparently have no internet connection.\n")
+  
+  pulls <- "https://github.com/xianyi/OpenBLAS.git" %>% 
+    remote_ls %>% 
+    names
+  
+  versions <- pulls %>% str_extract(
+    pattern = "v[:digit:][:punct:][:graph:]+") %>%
+    na.omit %>% 
+    str_remove(pattern = "\\^\\{\\}") %>% 
+    unique %>% 
+    str_remove(pattern = "^v")
+  
+  list(
+    last_version = versions[length(versions)],
+    versions = versions,
+    n = length(versions)
+  )
+  
 }
