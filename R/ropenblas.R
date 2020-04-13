@@ -108,20 +108,13 @@ modern_openblas <- function(x) {
   x > version_sistem
 }
 
+#' @importFrom pingr is_online
 connection <- function() {
-  nsystem <-
-    function(...)
-      tryCatch(
-        system(...),
-        error = function(e)
-          cat("You apparently have no internet connection.\n"),
-        warning = function(w)
-          cat("You apparently have no internet connection.\n")
-      )
-  check <- "ping -c2 google.com" %>%
-    nsystem(ignore.stderr = F, intern = TRUE)
-  
-  ifelse (!is.numeric(check) && !is.null(check), TRUE, FALSE)
+  if(is_online()) TRUE
+  else{
+    cat("You apparently have no internet connection.\n")
+    FALSE
+  }
 }
 
 loop_root <- function(x, attempt = 3L, sudo = TRUE) {
@@ -216,7 +209,7 @@ error_r <- function(){
 #' @importFrom cli rule col_green symbol style_bold
 #' @seealso \code{\link{rcompiler}}, \code{\link{last_version_r}}
 #' @examples
-#' # ropenblas()
+#' \dontrun{ropenblas()}
 #' @export
 ropenblas <- function(x = NULL, restart_r = TRUE) {
   if (Sys.info()[[1L]] != "Linux")
@@ -225,11 +218,13 @@ ropenblas <- function(x = NULL, restart_r = TRUE) {
   if (!connection())
     stop(glue("[{style_bold(col_red(symbol$cross))}] You apparently have no internet connection.\n"))
   
+  initial_blas <- dir_blas()$file_blas
+  
   download <- download_openblas(x)
   repo <- download$repo_openblas
   diretory_tmp <- download$path_openblas
   
-  "cp {dir_blas()$path}{dir_blas()$file_blas} {dir_blas()$path}{dir_blas()$file_blas}.keep" %>%
+  "cp {dir_blas()$path}{dir_blas()$file_blas} /opt" %>%
     glue %>% 
     loop_root(attempt = 5L)
   
@@ -365,7 +360,7 @@ ropenblas <- function(x = NULL, restart_r = TRUE) {
   }
   
   if (error_r()) {
-    "mv {dir_blas()$path}{dir_blas()$file_blas}.keep {dir_blas()$path}{dir_blas()$file_blas}" %>% 
+    "mv /opt/{initial_blas} {dir_blas()$path}" %>% 
       glue %>% 
       loop_root(attempt = 5L)
   
