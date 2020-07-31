@@ -1,11 +1,12 @@
-3ce062b6ed2142406066408b4a2f6391 *DESCRIPTION
-7a3ad8fdff29889d72813fa453a27657 *NAMESPACE
-bebb63ce9e5050a5c83e029b2330c902 *NEWS.md
+8aa01be8a14bb82e52372afa65059258 *DESCRIPTION
+f85ef362e4e99b1135c91c2eedbf2a5c *NAMESPACE
+d4c3820c8714e12f4ddcf733c04cdaba *NEWS.md
 5c7922c1cfff93e8c941a7007cf83f35 *R/globals.R
-3173b2aa2586aedafffad8fa2d435810 *R/ropenblas.R
+a9d2dae9ddd8bceb811f4cf1a6a9f8be *R/ropenblas.R
 15d15c060318f00064b312c7adfdcd08 *README.md
 aaec4a1613ea2cd29fc0a331afb8a977 *man/last_version_openblas.Rd
 66310767b0534ac731d46a8eb6e9372c *man/last_version_r.Rd
 d55d34b65253412429cd0e9748541be8 *man/link_again.Rd
-18e13bb4b1ed1d86ed9b416903c2aff0 *man/rcompiler.Rd
+968f9769fc52925439dae40cf5476f6c *man/rcompiler.Rd
+7df42e37f9035392d1f6884231be465f *man/rnews.Rd
 aed6a53c67a81445802dd3ed2688827b *man/ropenblas.Rd

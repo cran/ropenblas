@@ -1,6 +1,14 @@
-# ropenblas 0.2.7 (development version)
+# ropenblas 0.2.8 (development version)
 
 * Code review.
+
+# ropenblas 0.2.7
+
+* Code review;
+
+* Bugs have been fixed;
+
+* Add `rnews` function. This function will allow the user to view the changes in the recent release versions of the R language. It is also possible to check the changes in the development version of R. It is an alternative to the `news` function.
 
 # ropenblas 0.2.6 
 
