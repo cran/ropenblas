@@ -1,7 +1,7 @@
 Package: ropenblas
 Type: Package
 Title: Download, Compile and Link 'OpenBLAS' Library with R
-Version: 0.2.8
+Version: 0.2.9
 Authors@R: 
     person(given = "Pedro Rafael",
            family = "D. Marinho",
@@ -21,7 +21,7 @@ Imports: glue, magrittr, getPass, rstudioapi, stringr, git2r, RCurl,
         XML, cli, pingr, withr, rlang, fs,
 RoxygenNote: 7.1.1
 NeedsCompilation: no
-Packaged: 2020-09-19 15:31:45 UTC; prdm0
+Packaged: 2021-02-16 19:36:02 UTC; prdm0
 Author: Pedro Rafael D. Marinho [aut, cre]
 Repository: CRAN
-Date/Publication: 2020-09-19 15:40:03 UTC
+Date/Publication: 2021-02-16 20:00:02 UTC

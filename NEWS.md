@@ -1,6 +1,12 @@
-# ropenblas 0.2.9 (development version)
+# ropenblas 0.3.0 (development version)
 
 * Code review;
+
+# ropenblas 0.2.9
+
+* Code review;
+
+* Bug fix: adding missing symbolic links in the else statement of the `compiler_r` function. `compiler_r` is an internal function used by the `rcompiler` function.
 
 # ropenblas 0.2.8
 
